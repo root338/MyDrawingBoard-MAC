@@ -9,5 +9,8 @@
 import Cocoa
 
 class GMLDocumentController: NSDocumentController {
-
+    
+    override func newDocument(_ sender: Any?) {
+        
+    }
 }

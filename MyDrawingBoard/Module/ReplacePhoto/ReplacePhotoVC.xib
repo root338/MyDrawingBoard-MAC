@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="ReplacePhotoVC" customModule="MyDrawingBoard" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="312"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Mm-QC-ZcT">
+                    <rect key="frame" x="8" y="292" width="80" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="3HE-Hw-vBr"/>
+                        <constraint firstAttribute="height" constant="20" id="48Q-3e-zE6"/>
+                    </constraints>
+                    <buttonCell key="cell" type="bevel" title="回退" bezelStyle="circular" alignment="left" inset="2" id="qtD-6u-zEv">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="handlePOP:" target="-2" id="tPb-Ic-igE"/>
+                    </connections>
+                </button>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yVx-FB-1z6">
+                    <rect key="frame" x="20" y="234" width="440" height="50"/>
+                    <subviews>
+                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0LE-J5-pt6">
+                            <rect key="frame" x="0.0" y="29" width="401" height="21"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uvO-Zx-UNG">
+                                    <rect key="frame" x="-6" y="-7" width="162" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="150" id="mYa-Tn-FbU"/>
+                                    </constraints>
+                                    <buttonCell key="cell" type="push" title="From Folder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="KrJ-9W-Nq6">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="handleFromFolder:" target="-2" id="5F2-BJ-rPW"/>
+                                    </connections>
+                                </button>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xwO-1Y-cgW" customClass="SelectedFolderLabel" customModule="MyDrawingBoard" customModuleProvider="target">
+                                    <rect key="frame" x="156" y="3" width="184" height="16"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="7dO-CP-AMB"/>
+                                    </constraints>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="也可将文件夹拖入该区域" id="pJB-QF-UxO">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oVG-Z5-DAe">
+                                    <rect key="frame" x="340" y="-7" width="67" height="32"/>
+                                    <buttonCell key="cell" type="push" title="历史" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UIQ-MP-Eab">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="handleFromFolderHistory:" target="-2" id="rwS-bL-Gsy"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                        <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qdd-T8-8Q7">
+                            <rect key="frame" x="0.0" y="0.0" width="401" height="21"/>
+                            <subviews>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pvG-wr-wre">
+                                    <rect key="frame" x="-6" y="-7" width="162" height="32"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="150" id="UqA-G5-Wvc"/>
+                                    </constraints>
+                                    <buttonCell key="cell" type="push" title="To Folder" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="GEi-X5-HHb">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="handleToFolder:" target="-2" id="t67-kX-Ns4"/>
+                                    </connections>
+                                </button>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QeJ-oo-Lit" customClass="SelectedFolderLabel" customModule="MyDrawingBoard" customModuleProvider="target">
+                                    <rect key="frame" x="156" y="3" width="184" height="16"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="jYE-iB-juq"/>
+                                    </constraints>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="也可将文件夹拖入该区域" id="792-0q-WW2">
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9GH-oY-9Fr">
+                                    <rect key="frame" x="340" y="-7" width="67" height="32"/>
+                                    <buttonCell key="cell" type="push" title="历史" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0pv-Cx-gos">
+                                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                        <font key="font" usesAppearanceFont="YES"/>
+                                    </buttonCell>
+                                    <connections>
+                                        <action selector="handleToFolderHistory:" target="-2" id="adU-tS-ifx"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Yr8-qh-UuY">
+                    <rect key="frame" x="399" y="186" width="67" height="32"/>
+                    <buttonCell key="cell" type="push" title="替换" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="liq-sm-PXy">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <connections>
+                            <action selector="handleReplace:" target="-2" id="6eT-yY-asG"/>
+                        </connections>
+                    </buttonCell>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="yVx-FB-1z6" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="2qC-cC-7W6"/>
+                <constraint firstItem="9Mm-QC-ZcT" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="GAO-Ij-gYq"/>
+                <constraint firstAttribute="trailing" secondItem="Yr8-qh-UuY" secondAttribute="trailing" constant="20" id="J5Y-Ll-f4o"/>
+                <constraint firstItem="yVx-FB-1z6" firstAttribute="top" secondItem="9Mm-QC-ZcT" secondAttribute="bottom" constant="8" id="L7E-Zt-gTf"/>
+                <constraint firstAttribute="trailing" secondItem="yVx-FB-1z6" secondAttribute="trailing" constant="20" id="W8y-lp-LbA"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Yr8-qh-UuY" secondAttribute="bottom" constant="20" id="e4w-tE-Cvq"/>
+                <constraint firstItem="Yr8-qh-UuY" firstAttribute="top" secondItem="yVx-FB-1z6" secondAttribute="bottom" constant="20" id="m4O-40-tKB"/>
+                <constraint firstItem="9Mm-QC-ZcT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="xha-ga-QEb"/>
+            </constraints>
+            <point key="canvasLocation" x="159" y="222"/>
+        </customView>
+    </objects>
+</document>
