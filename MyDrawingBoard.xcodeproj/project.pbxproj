@@ -15,6 +15,9 @@
 		181D45ED247771C90038F6F3 /* MyMainPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D45EC247771C90038F6F3 /* MyMainPanel.swift */; };
 		181D45F02477724A0038F6F3 /* GMLWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D45EF2477724A0038F6F3 /* GMLWindowController.swift */; };
 		181D46552477CDF00038F6F3 /* GMLDocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 181D46542477CDF00038F6F3 /* GMLDocumentController.swift */; };
+		18EAA8E5247BA1DF000ACB9D /* ReplacePhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EAA8E4247BA1DF000ACB9D /* ReplacePhotoService.swift */; };
+		18EAA8E8247BA3D1000ACB9D /* ReplacePhotoDefinesType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EAA8E7247BA3D1000ACB9D /* ReplacePhotoDefinesType.swift */; };
+		18EAA8EB247CB1D2000ACB9D /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EAA8EA247CB1D2000ACB9D /* FileItem.swift */; };
 		6D4C5DFC2478B0C00012E7D4 /* GMLApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D4C5DFB2478B0C00012E7D4 /* GMLApplication.swift */; };
 		6D8D0CD1247AB22300FD6933 /* ReplacePhotoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8D0CCF247AB22300FD6933 /* ReplacePhotoVC.swift */; };
 		6D8D0CD2247AB22300FD6933 /* ReplacePhotoVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6D8D0CD0247AB22300FD6933 /* ReplacePhotoVC.xib */; };
@@ -57,6 +60,9 @@
 		181D45EF2477724A0038F6F3 /* GMLWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMLWindowController.swift; sourceTree = "<group>"; };
 		181D464D2477CB040038F6F3 /* MyDrawingBoard-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MyDrawingBoard-Bridging-Header.h"; sourceTree = "<group>"; };
 		181D46542477CDF00038F6F3 /* GMLDocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMLDocumentController.swift; sourceTree = "<group>"; };
+		18EAA8E4247BA1DF000ACB9D /* ReplacePhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacePhotoService.swift; sourceTree = "<group>"; };
+		18EAA8E7247BA3D1000ACB9D /* ReplacePhotoDefinesType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacePhotoDefinesType.swift; sourceTree = "<group>"; };
+		18EAA8EA247CB1D2000ACB9D /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
 		6D4C5DFB2478B0C00012E7D4 /* GMLApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMLApplication.swift; sourceTree = "<group>"; };
 		6D8D0CCF247AB22300FD6933 /* ReplacePhotoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacePhotoVC.swift; sourceTree = "<group>"; };
 		6D8D0CD0247AB22300FD6933 /* ReplacePhotoVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReplacePhotoVC.xib; sourceTree = "<group>"; };
@@ -181,6 +187,37 @@
 			path = BaseController;
 			sourceTree = "<group>";
 		};
+		18EAA8E2247B6CF6000ACB9D /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		18EAA8E3247BA1BA000ACB9D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				18EAA8E4247BA1DF000ACB9D /* ReplacePhotoService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		18EAA8E6247BA341000ACB9D /* DefineTypes */ = {
+			isa = PBXGroup;
+			children = (
+				18EAA8E7247BA3D1000ACB9D /* ReplacePhotoDefinesType.swift */,
+			);
+			path = DefineTypes;
+			sourceTree = "<group>";
+		};
+		18EAA8E9247CB1BD000ACB9D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				18EAA8EA247CB1D2000ACB9D /* FileItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		6D4BC7CC2478D20300F7408E /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -215,6 +252,10 @@
 		6D9585DE24795F550061FB55 /* ReplacePhoto */ = {
 			isa = PBXGroup;
 			children = (
+				18EAA8E9247CB1BD000ACB9D /* Models */,
+				18EAA8E6247BA341000ACB9D /* DefineTypes */,
+				18EAA8E3247BA1BA000ACB9D /* Service */,
+				18EAA8E2247B6CF6000ACB9D /* Controllers */,
 				6D8D0CD3247ABED500FD6933 /* Views */,
 				6D8D0CCF247AB22300FD6933 /* ReplacePhotoVC.swift */,
 				6D8D0CD0247AB22300FD6933 /* ReplacePhotoVC.xib */,
@@ -355,8 +396,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D8D0CD6247ABF2A00FD6933 /* SelectedFolderLabel.swift in Sources */,
+				18EAA8E5247BA1DF000ACB9D /* ReplacePhotoService.swift in Sources */,
 				6D9585DD24795EAB0061FB55 /* MainToolCell.swift in Sources */,
 				181D45ED247771C90038F6F3 /* MyMainPanel.swift in Sources */,
+				18EAA8EB247CB1D2000ACB9D /* FileItem.swift in Sources */,
+				18EAA8E8247BA3D1000ACB9D /* ReplacePhotoDefinesType.swift in Sources */,
 				6D4C5DFC2478B0C00012E7D4 /* GMLApplication.swift in Sources */,
 				6D9585DB2479514D0061FB55 /* ToolsItem.swift in Sources */,
 				181D46552477CDF00038F6F3 /* GMLDocumentController.swift in Sources */,

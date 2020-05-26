@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ReplacePhotoVC" customModule="MyDrawingBoard" customModuleProvider="target">
             <connections>
+                <outlet property="fromFolderLabel" destination="xwO-1Y-cgW" id="UhX-8h-tMZ"/>
+                <outlet property="toFolderLabel" destination="QeJ-oo-Lit" id="wOc-em-35T"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView id="Hz6-mo-xeY">
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="0.0" width="480" height="312"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Mm-QC-ZcT">
                     <rect key="frame" x="8" y="292" width="80" height="20"/>
@@ -35,7 +36,7 @@
                     <rect key="frame" x="20" y="234" width="440" height="50"/>
                     <subviews>
                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0LE-J5-pt6">
-                            <rect key="frame" x="0.0" y="29" width="401" height="21"/>
+                            <rect key="frame" x="0.0" y="29" width="440" height="21"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uvO-Zx-UNG">
                                     <rect key="frame" x="-6" y="-7" width="162" height="32"/>
@@ -50,19 +51,19 @@
                                         <action selector="handleFromFolder:" target="-2" id="5F2-BJ-rPW"/>
                                     </connections>
                                 </button>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xwO-1Y-cgW" customClass="SelectedFolderLabel" customModule="MyDrawingBoard" customModuleProvider="target">
-                                    <rect key="frame" x="156" y="3" width="184" height="16"/>
+                                <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="700" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xwO-1Y-cgW" customClass="SelectedFolderLabel" customModule="MyDrawingBoard" customModuleProvider="target">
+                                    <rect key="frame" x="156" y="3" width="223" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="7dO-CP-AMB"/>
                                     </constraints>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="也可将文件夹拖入该区域" id="pJB-QF-UxO">
+                                    <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" placeholderString="也可将文件夹拖入该区域" id="pJB-QF-UxO">
                                         <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oVG-Z5-DAe">
-                                    <rect key="frame" x="340" y="-7" width="67" height="32"/>
+                                    <rect key="frame" x="379" y="-7" width="67" height="32"/>
                                     <buttonCell key="cell" type="push" title="历史" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="UIQ-MP-Eab">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" usesAppearanceFont="YES"/>
@@ -84,7 +85,7 @@
                             </customSpacing>
                         </stackView>
                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qdd-T8-8Q7">
-                            <rect key="frame" x="0.0" y="0.0" width="401" height="21"/>
+                            <rect key="frame" x="0.0" y="0.0" width="440" height="21"/>
                             <subviews>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pvG-wr-wre">
                                     <rect key="frame" x="-6" y="-7" width="162" height="32"/>
@@ -99,19 +100,19 @@
                                         <action selector="handleToFolder:" target="-2" id="t67-kX-Ns4"/>
                                     </connections>
                                 </button>
-                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QeJ-oo-Lit" customClass="SelectedFolderLabel" customModule="MyDrawingBoard" customModuleProvider="target">
-                                    <rect key="frame" x="156" y="3" width="184" height="16"/>
+                                <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" horizontalCompressionResistancePriority="700" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QeJ-oo-Lit" customClass="SelectedFolderLabel" customModule="MyDrawingBoard" customModuleProvider="target">
+                                    <rect key="frame" x="156" y="3" width="223" height="16"/>
                                     <constraints>
                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="jYE-iB-juq"/>
                                     </constraints>
-                                    <textFieldCell key="cell" lineBreakMode="clipping" title="也可将文件夹拖入该区域" id="792-0q-WW2">
+                                    <textFieldCell key="cell" lineBreakMode="truncatingMiddle" alignment="left" placeholderString="也可将文件夹拖入该区域" id="792-0q-WW2">
                                         <font key="font" usesAppearanceFont="YES"/>
                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                     </textFieldCell>
                                 </textField>
                                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9GH-oY-9Fr">
-                                    <rect key="frame" x="340" y="-7" width="67" height="32"/>
+                                    <rect key="frame" x="379" y="-7" width="67" height="32"/>
                                     <buttonCell key="cell" type="push" title="历史" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="0pv-Cx-gos">
                                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                         <font key="font" usesAppearanceFont="YES"/>
@@ -163,7 +164,7 @@
                 <constraint firstItem="Yr8-qh-UuY" firstAttribute="top" secondItem="yVx-FB-1z6" secondAttribute="bottom" constant="20" id="m4O-40-tKB"/>
                 <constraint firstItem="9Mm-QC-ZcT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="8" id="xha-ga-QEb"/>
             </constraints>
-            <point key="canvasLocation" x="159" y="222"/>
+            <point key="canvasLocation" x="121" y="171"/>
         </customView>
     </objects>
 </document>

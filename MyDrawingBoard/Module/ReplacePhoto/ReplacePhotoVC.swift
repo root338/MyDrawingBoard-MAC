@@ -8,13 +8,15 @@
 
 import Cocoa
 
-enum ReplacePhotoError : Error {
-    case cancelSelectFolder
-    case folderIsEmpty
-}
+
+
+typealias SelectedFileURLResult = Result<URL, ReplacePhotoError>
 
 class ReplacePhotoVC: NSViewController {
 
+    @IBOutlet weak var fromFolderLabel: SelectedFolderLabel!
+    @IBOutlet weak var toFolderLabel: SelectedFolderLabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
@@ -28,8 +30,8 @@ class ReplacePhotoVC: NSViewController {
     @IBAction func handleFromFolder(_ sender: Any) {
         handleSelectedFolder { (result) in
             switch result {
-            case .success(_): break
-                
+            case .success(let fileURL):
+                fromFolderLabel?.stringValue = fileURL.absoluteString
             default: return
             }
         }
@@ -38,7 +40,13 @@ class ReplacePhotoVC: NSViewController {
         
     }
     @IBAction func handleToFolder(_ sender: Any) {
-//        handleSelectedFolder()
+        handleSelectedFolder { (result) in
+            switch result {
+            case .success(let fileURL):
+                toFolderLabel?.stringValue = fileURL.absoluteString
+            default: return
+            }
+        }
     }
     @IBAction func handleToFolderHistory(_ sender: Any) {
         
@@ -47,7 +55,7 @@ class ReplacePhotoVC: NSViewController {
         
     }
     
-    func handleSelectedFolder(completion: (Result<URL, ReplacePhotoError>) -> Void) {
+    func handleSelectedFolder(completion: (SelectedFileURLResult) -> Void) {
         let panel = NSOpenPanel()
         panel.canChooseDirectories = true
         panel.canChooseFiles = false
