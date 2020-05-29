@@ -1,0 +1,3 @@
+[submodule "GMLExtension"]
+	path = GMLExtension
+	url = https://github.com/root338/GMLExtension.git

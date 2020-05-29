@@ -12,41 +12,45 @@ protocol ReplacePhotoServiceDelegate : NSObjectProtocol {
     
 }
 
-
-
 class ReplacePhotoService: NSObject {
     var fromFolder: String?
     var toFolder: String?
-    var types : [photoFormat] = [.png, .jpeg]
+    var types : [String] = ["png", "jpeg"]
     weak var delegate : ReplacePhotoServiceDelegate?
     
-    func runReplace() {
-        
+    func runReplace() throws {
+        guard let fromFolder = self.fromFolder else { throw ReplacePhotoError.toPathIsEmpty }
+        guard let toFolder = self.toFolder else { throw ReplacePhotoError.toPathIsEmpty }
+        guard let fromFileItems = analysisPhoto(path: fromFolder) else {
+            
+        }
+        guard let toFileItems = analysisPhoto(path: toFolder) else {
+            
+        }
     }
 }
 
 extension ReplacePhotoService {
-    func analysisPhoto(path: String?) throws {
-        let isDir = try isDirectory(filePath: path)
-        if isDir {
-            let paths = try FileManager.default.subpathsOfDirectory(atPath: path!)
-            for filePath in paths {
-                
+    /// 分析路径中图片
+    func analysisPhoto(path: String, isRecursive: Bool = false) -> [PhotoFileItem]? {
+        var fileItems = [PhotoFileItem]()
+        FileManager.default.enumerator(at: path, deepRecursion: isRecursive) { (filePath, isDir) -> FileManager.EnumeratorOperate in
+            if !isDir, let fileItem = handle(filePath: filePath) {
+                fileItems.append(fileItem)
             }
+            return .none
         }
-        
+        return fileItems
     }
-    
-    func handle(filePath: String)  {
-        
-    }
-    
-    func isDirectory(filePath: String?) throws -> Bool {
-        guard filePath == nil else { throw ReplacePhotoError.folderIsEmpty }
-        let isDirectory = UnsafeMutablePointer<ObjCBool>.allocate(capacity: 1)
-        guard FileManager.default.fileExists(atPath: filePath!, isDirectory: isDirectory) else {
-            throw ReplacePhotoError.unavailable
+    /// 创建图片对象
+    func handle(filePath: String) -> PhotoFileItem? {
+        let pathExtension = filePath.ml_pathExtension
+        guard types.contains(pathExtension) else {
+            return nil
         }
-        return isDirectory.pointee.boolValue
+        guard let imagePixelSize = NSImage(contentsOfFile: filePath)?.imagePixelSize else {
+            return nil
+        }
+        return PhotoFileItem(filePath: filePath, format: pathExtension, pixelSize: imagePixelSize)
     }
 }

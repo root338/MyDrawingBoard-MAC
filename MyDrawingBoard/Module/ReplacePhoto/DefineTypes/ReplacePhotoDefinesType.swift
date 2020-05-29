@@ -12,6 +12,9 @@ enum ReplacePhotoError : Error {
     case cancelSelectFolder
     case folderIsEmpty
     case unavailable
+    case fromPathIsEmpty
+    case toPathIsEmpty
+    case photoIsEmpty
 }
 
 enum photoFormat : String {
