@@ -10,11 +10,12 @@ import Foundation
 
 enum ReplacePhotoError : Error {
     case cancelSelectFolder
-    case folderIsEmpty
+    case isEmpty(_ message: String)
     case unavailable
-    case fromPathIsEmpty
-    case toPathIsEmpty
-    case photoIsEmpty
+    /// 没有找到
+    case notFind
+    /// 操作失败
+    case operateFailure(item: FileReplaceResult)
 }
 
 enum photoFormat : String {

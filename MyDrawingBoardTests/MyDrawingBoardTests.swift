@@ -11,12 +11,22 @@ import XCTest
 
 class MyDrawingBoardTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+//    override func setUpWithError() throws {
+//        // Put setup code here. This method is called before the invocation of each test method in the class.
+//    }
+//
+//    override func tearDownWithError() throws {
+//        // Put teardown code here. This method is called after the invocation of each test method in the class.
+//    }
+    
+    func testBuilderAttributes() throws {
+        let builder = GMLAttributesBuilder()
+        let font = NSFont.systemFont(ofSize: 12)
+        
+        _ = builder.push().font(font)
+            .backgroundColor(NSColor.black)
+        
+        print(builder.pop()!)
     }
 
     func testExample() throws {
