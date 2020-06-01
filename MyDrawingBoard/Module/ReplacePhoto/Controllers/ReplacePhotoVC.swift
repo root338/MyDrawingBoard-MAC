@@ -8,8 +8,6 @@
 
 import Cocoa
 
-
-
 typealias SelectedFileURLResult = Result<URL, ReplacePhotoError>
 
 class ReplacePhotoVC: NSViewController {
@@ -83,7 +81,7 @@ class ReplacePhotoVC: NSViewController {
 extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
     
     func service(_ service: ReplacePhotoService, error: Error) {
-        textBuilder.append(analysisError(error), attributes: )
+        textBuilder.append(analysisError(error), attributes: errorAttributes())
         logViewAppend()
     }
     
@@ -132,9 +130,18 @@ extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
     }
     
     private func defaultAttributes() -> GMLAttributesSet {
-        if let attributes = attributesBuilder.attributes(at: 0) {
+        let identifier = "defaultAttributes"
+        if let attributes = attributesBuilder.attributes(for: identifier) {
             return attributes
         }
-        
+        return attributesBuilder.push(identifier: identifier).foregroundColor(GMLColor.black).attributes(for: identifier)!
+    }
+    
+    private func errorAttributes() -> GMLAttributesSet {
+        let identifier = "errorAttributes"
+        if let att = attributesBuilder.attributes(for: identifier) {
+            return att
+        }
+        return attributesBuilder.push(identifier: identifier).foregroundColor(GMLColor.red).attributes(for: identifier)!
     }
 }
