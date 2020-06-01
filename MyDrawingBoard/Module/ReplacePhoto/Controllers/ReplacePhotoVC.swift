@@ -19,11 +19,14 @@ class ReplacePhotoVC: NSViewController {
     @IBOutlet var logTextView: NSTextView!
     
     private lazy var service = ReplacePhotoService(delegate: self)
+    private lazy var textBuilder = GMLRichTextBuilder()
+    private lazy var attributesBuilder = GMLAttributesBuilder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         self.title = "替换图片"
+        richTextBuilder.defaultAttributes = attributesBuilder.font(GMLFont.systemFont(ofSize: 9)).pop()
     }
     
     @IBAction func handlePOP(_ sender: Any) {
@@ -80,7 +83,8 @@ class ReplacePhotoVC: NSViewController {
 extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
     
     func service(_ service: ReplacePhotoService, error: Error) {
-        logViewAppend(analysisError(error))
+        textBuilder.append(analysisError(error), attributes: )
+        logViewAppend()
     }
     
     func service(_ service: ReplacePhotoService, didReplace item: PhotoFileItem, toItem: PhotoFileItem) {
@@ -117,12 +121,20 @@ extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
         }
     }
     
-    private func logViewAppend(_ msg: String) {
-        var text = logTextView.string
-        if !text.isEmpty && !text.hasSuffix("\n") {
+    private func logViewAppend(_ msg: NSAttributedString) {
+        var text = logTextView.attributedString()
+        if !text.string.isEmpty && !text.string.hasSuffix("\n") {
+            
             text.append("\n")
         }
         text.append(msg)
-        logTextView.string = text
+        logTextView.attributedString() = text
+    }
+    
+    private func defaultAttributes() -> GMLAttributesSet {
+        if let attributes = attributesBuilder.attributes(at: 0) {
+            return attributes
+        }
+        
     }
 }

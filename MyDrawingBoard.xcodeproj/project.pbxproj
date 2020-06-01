@@ -46,12 +46,12 @@
 		6D904F022482A16C00D24289 /* GMLRichTextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D904EC624828C3200D24289 /* GMLRichTextBuilder.swift */; };
 		6D904F032482A17E00D24289 /* GMLDictionaryExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183591712480BA530093FEB2 /* GMLDictionaryExtension.swift */; };
 		6D904F092482ACBA00D24289 /* GMLAttributesKeyDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D904F082482ACBA00D24289 /* GMLAttributesKeyDefines.swift */; };
-		6D904F0B2482AD8D00D24289 /* GMLAttributesBuilder+ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D904F0A2482AD8D00D24289 /* GMLAttributesBuilder+ParagraphStyle.swift */; };
+		6D904F0B2482AD8D00D24289 /* GMLAttributesBuilderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D904F0A2482AD8D00D24289 /* GMLAttributesBuilderExtension.swift */; };
 		6D9325DB24830AD80078C851 /* GMLRuntimeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9325DA24830AD80078C851 /* GMLRuntimeExtension.swift */; };
 		6D9325DD248319CD0078C851 /* GMLRuntimeExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9325DC248319CD0078C851 /* GMLRuntimeExtensionTests.swift */; };
 		6D9585DB2479514D0061FB55 /* ToolsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9585DA2479514D0061FB55 /* ToolsItem.swift */; };
 		6D9585DD24795EAB0061FB55 /* MainToolCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D9585DC24795EAB0061FB55 /* MainToolCell.swift */; };
-		6D9C72FA2483BCC100F7B804 /* GMLAttributesBuilder+ParagraphStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D904F0A2482AD8D00D24289 /* GMLAttributesBuilder+ParagraphStyle.swift */; };
+		6D9C72FA2483BCC100F7B804 /* GMLAttributesBuilderExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D904F0A2482AD8D00D24289 /* GMLAttributesBuilderExtension.swift */; };
 		6D9C72FB2483BCC900F7B804 /* GMLAttributesKeyDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D904F082482ACBA00D24289 /* GMLAttributesKeyDefines.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +110,10 @@
 		183591762480BA540093FEB2 /* StringPathExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringPathExtension.swift; sourceTree = "<group>"; };
 		183591792480BA540093FEB2 /* GMLArrayExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMLArrayExtension.swift; sourceTree = "<group>"; };
 		1835917E2480BA540093FEB2 /* GMLPriceCalculateRules.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMLPriceCalculateRules.swift; sourceTree = "<group>"; };
+		1879BA932484A2CA00FB4E02 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1879BA942484A2E200FB4E02 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1879BA952484A31000FB4E02 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		1879BA962484A85B00FB4E02 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		18EAA8E4247BA1DF000ACB9D /* ReplacePhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacePhotoService.swift; sourceTree = "<group>"; };
 		18EAA8E7247BA3D1000ACB9D /* ReplacePhotoDefinesType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacePhotoDefinesType.swift; sourceTree = "<group>"; };
 		18EAA8EA247CB1D2000ACB9D /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
@@ -136,7 +140,7 @@
 		6D904EF424829A9B00D24289 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D904EFF24829B6C00D24289 /* GMLAttributedStringDefines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMLAttributedStringDefines.swift; sourceTree = "<group>"; };
 		6D904F082482ACBA00D24289 /* GMLAttributesKeyDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMLAttributesKeyDefines.swift; sourceTree = "<group>"; };
-		6D904F0A2482AD8D00D24289 /* GMLAttributesBuilder+ParagraphStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GMLAttributesBuilder+ParagraphStyle.swift"; sourceTree = "<group>"; };
+		6D904F0A2482AD8D00D24289 /* GMLAttributesBuilderExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMLAttributesBuilderExtension.swift; sourceTree = "<group>"; };
 		6D9325DA24830AD80078C851 /* GMLRuntimeExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMLRuntimeExtension.swift; sourceTree = "<group>"; };
 		6D9325DC248319CD0078C851 /* GMLRuntimeExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMLRuntimeExtensionTests.swift; sourceTree = "<group>"; };
 		6D9585DA2479514D0061FB55 /* ToolsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolsItem.swift; sourceTree = "<group>"; };
@@ -292,6 +296,7 @@
 		1835916B2480BA530093FEB2 /* GMLExtension */ = {
 			isa = PBXGroup;
 			children = (
+				1879BA952484A31000FB4E02 /* README.md */,
 				6D9325D924830A9F0078C851 /* RunTime */,
 				1835916C2480BA530093FEB2 /* CocoaExtension */,
 				1835916F2480BA530093FEB2 /* FoundationExtension */,
@@ -319,6 +324,7 @@
 		1835916F2480BA530093FEB2 /* FoundationExtension */ = {
 			isa = PBXGroup;
 			children = (
+				1879BA942484A2E200FB4E02 /* README.md */,
 				6D904EC524828C0600D24289 /* AttributedExtension */,
 				183591702480BA530093FEB2 /* DictionaryExtension */,
 				183591722480BA530093FEB2 /* FileManagerExtension */,
@@ -364,6 +370,7 @@
 		1835917B2480BA540093FEB2 /* FoundationToolsExtension */ = {
 			isa = PBXGroup;
 			children = (
+				1879BA932484A2CA00FB4E02 /* README.md */,
 				1835917D2480BA540093FEB2 /* Number */,
 			);
 			path = FoundationToolsExtension;
@@ -439,9 +446,10 @@
 			children = (
 				6D904EC624828C3200D24289 /* GMLRichTextBuilder.swift */,
 				6D904EC824828D2B00D24289 /* GMLAttributesBuilder.swift */,
-				6D904F0A2482AD8D00D24289 /* GMLAttributesBuilder+ParagraphStyle.swift */,
+				6D904F0A2482AD8D00D24289 /* GMLAttributesBuilderExtension.swift */,
 				6D904EFF24829B6C00D24289 /* GMLAttributedStringDefines.swift */,
 				6D904F082482ACBA00D24289 /* GMLAttributesKeyDefines.swift */,
+				1879BA962484A85B00FB4E02 /* README.md */,
 			);
 			path = AttributedExtension;
 			sourceTree = "<group>";
@@ -736,7 +744,7 @@
 				18EAA8E5247BA1DF000ACB9D /* ReplacePhotoService.swift in Sources */,
 				6D904EC724828C3200D24289 /* GMLRichTextBuilder.swift in Sources */,
 				6D9585DD24795EAB0061FB55 /* MainToolCell.swift in Sources */,
-				6D904F0B2482AD8D00D24289 /* GMLAttributesBuilder+ParagraphStyle.swift in Sources */,
+				6D904F0B2482AD8D00D24289 /* GMLAttributesBuilderExtension.swift in Sources */,
 				1835917F2480BA550093FEB2 /* NSImageExtension.swift in Sources */,
 				6D90403624824BB400D24289 /* FileReplaceLog.swift in Sources */,
 				181D45ED247771C90038F6F3 /* MyMainPanel.swift in Sources */,
@@ -785,7 +793,7 @@
 				6D904ED124829A9800D24289 /* AppDelegate.swift in Sources */,
 				6D904ED324829A9800D24289 /* SceneDelegate.swift in Sources */,
 				6D9C72FB2483BCC900F7B804 /* GMLAttributesKeyDefines.swift in Sources */,
-				6D9C72FA2483BCC100F7B804 /* GMLAttributesBuilder+ParagraphStyle.swift in Sources */,
+				6D9C72FA2483BCC100F7B804 /* GMLAttributesBuilderExtension.swift in Sources */,
 				6D904F012482A16800D24289 /* GMLAttributedStringDefines.swift in Sources */,
 				6D904EFE24829AB500D24289 /* GMLAttributesBuilder.swift in Sources */,
 				6D904F022482A16C00D24289 /* GMLRichTextBuilder.swift in Sources */,
