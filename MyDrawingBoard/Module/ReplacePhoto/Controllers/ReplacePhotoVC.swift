@@ -24,7 +24,8 @@ class ReplacePhotoVC: NSViewController {
         super.viewDidLoad()
         // Do view setup here.
         self.title = "替换图片"
-        richTextBuilder.defaultAttributes = attributesBuilder.font(GMLFont.systemFont(ofSize: 9)).pop()
+        
+        textBuilder.defaultAttributes = attributesBuilder.font(GMLFont.systemFont(ofSize: 11)).popLast()
     }
     
     @IBAction func handlePOP(_ sender: Any) {
@@ -56,7 +57,7 @@ class ReplacePhotoVC: NSViewController {
         
     }
     @IBAction func handleReplace(_ sender: Any) {
-        logTextView.string = ""
+        logTextView.textStorage?.setAttributedString(NSAttributedString())
         service.set(originPath: originFolderLabel.stringValue, toPath: replaceFolderLabel.stringValue)
         service.run()
     }
@@ -81,13 +82,14 @@ class ReplacePhotoVC: NSViewController {
 extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
     
     func service(_ service: ReplacePhotoService, error: Error) {
-        textBuilder.append(analysisError(error), attributes: errorAttributes())
-        logViewAppend()
+        logText(append: textBuilder
+            .append(analysisError(error), attributes: errorAttributes())
+            .append(.linebreak).popLast())
     }
     
     func service(_ service: ReplacePhotoService, didReplace item: PhotoFileItem, toItem: PhotoFileItem) {
         let text = item.filePath + " 替换成 " + toItem.filePath + " 成功"
-        logViewAppend(text)
+        logText(append: textBuilder.append(text, attributes: defaultAttributes()).append(.linebreak).popLast())
     }
     
     private func analysisError(_ error: Error) -> String {
@@ -98,8 +100,8 @@ extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
                 return "没有选择文件路径"
             case .isEmpty(let msg):
                 return msg
-            case .unavailable:
-                return "路径不可用"
+            case .unavailable(let msg):
+                return msg
             case .notFind:
                 return "没有找到"
             case .operateFailure(let item):
@@ -119,14 +121,11 @@ extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
         }
     }
     
-    private func logViewAppend(_ msg: NSAttributedString) {
-        var text = logTextView.attributedString()
-        if !text.string.isEmpty && !text.string.hasSuffix("\n") {
-            
-            text.append("\n")
+    private func logText(append att: NSAttributedString?) {
+        if att == nil {
+            return
         }
-        text.append(msg)
-        logTextView.attributedString() = text
+        logTextView.textStorage?.append(att!)
     }
     
     private func defaultAttributes() -> GMLAttributesSet {

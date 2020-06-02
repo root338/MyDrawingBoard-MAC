@@ -20,13 +20,13 @@ class MyDrawingBoardTests: XCTestCase {
 //    }
     
     func testBuilderAttributes() throws {
-        let builder = GMLAttributesBuilder()
-        let font = NSFont.systemFont(ofSize: 12)
-        
-        _ = builder.push().font(font)
-            .backgroundColor(NSColor.black)
-        
-        print(builder.pop()!)
+//        let builder = GMLAttributesBuilder()
+//        let font = NSFont.systemFont(ofSize: 12)
+//        
+//        _ = builder.push().font(font)
+//            .backgroundColor(NSColor.black)
+//        
+//        print(builder.pop()!)
     }
 
     func testExample() throws {

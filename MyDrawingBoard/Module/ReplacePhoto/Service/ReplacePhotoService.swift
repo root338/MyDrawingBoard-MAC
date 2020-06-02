@@ -51,11 +51,15 @@ class ReplacePhotoService: NSObject {
 private extension ReplacePhotoService {
     // 处理选择选中的文件
     func handleSelectedFile() throws -> (originFileItems: [PhotoFileItem], toFileItems: [PhotoFileItem]) {
+        
         guard let originFolder = self.originFolder, !originFolder.isEmpty else {
             throw ReplacePhotoError.isEmpty("来源文件路径不能为空")
         }
         guard let replaceFolder = self.replaceFolder, !replaceFolder.isEmpty else {
             throw ReplacePhotoError.isEmpty("目标文件路径不能为空")
+        }
+        if originFolder == replaceFolder {
+            throw ReplacePhotoError.unavailable("源文件路径和目标文件路径不能相同")
         }
         guard let originFileItems = analysisPhoto(path: originFolder) else {
             throw ReplacePhotoError.isEmpty("来源文件对应没有内容")

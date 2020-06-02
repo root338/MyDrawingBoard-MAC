@@ -11,7 +11,7 @@ import Foundation
 enum ReplacePhotoError : Error {
     case cancelSelectFolder
     case isEmpty(_ message: String)
-    case unavailable
+    case unavailable(_ message: String)
     /// 没有找到
     case notFind
     /// 操作失败
