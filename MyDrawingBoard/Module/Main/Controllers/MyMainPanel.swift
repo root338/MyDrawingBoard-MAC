@@ -13,7 +13,8 @@ class MyMainPanel: NSViewController {
     @IBOutlet weak var listView: NSTableView!
     
     lazy var tools : [ToolsItem] = [
-        ToolsItem(name: "替换图标", functionalDescription: "替换文件夹中同像素的图片", targetClass: ReplacePhotoVC.self)
+        ToolsItem(name: "替换图标", functionalDescription: "替换文件夹中同像素的图片", targetClass: ReplacePhotoVC.self),
+        ToolsItem(name: "Assets 管理", functionalDescription: "基本项目 Assets 的管理，现在图片太多，简化命名时的复制粘贴", targetClass: AssetsVC.self)
     ]
     
     override func viewDidLoad() {
@@ -48,6 +49,6 @@ extension MyMainPanel : NSTableViewDataSource, NSTableViewDelegate {
         let item = tools[selectedRow]
         listView.deselectRow(selectedRow)
         let targetVC = item.targetClass.init()
-        self.presentAsSheet(targetVC)
+        self.presentAsModalWindow(targetVC)
     }
 }
