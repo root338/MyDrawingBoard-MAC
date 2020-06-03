@@ -15,17 +15,12 @@ class SelectedFolderLabel: NSTextField {
         super.awakeFromNib()
         
         let types : [NSPasteboard.PasteboardType] = [
-        .string,
-        .png,
-        .URL,
-        .fileURL,
-        .fileContents
+            .fileURL,
         ]
         self.registerForDraggedTypes(types)
     }
     
     override func draggingEntered(_ sender: NSDraggingInfo) -> NSDragOperation {
-        print("")
         return NSDragOperation.copy
     }
     
@@ -33,19 +28,18 @@ class SelectedFolderLabel: NSTextField {
         guard let items = sender.draggingPasteboard.pasteboardItems else { return false }
         for item in items {
             for type in item.types {
-                if let str = item.string(forType: type) {
-                    let subpaths = FileManager.default.subpaths(atPath: str)
-                    print(subpaths)
-                }
-                if let data = item.data(forType: type) {
-                    print(data)
-                }
-                if let list = item.propertyList(forType: type) {
-                    print(list)
+                switch type {
+                case .fileURL:
+                    guard let filePath = item.string(forType: type) else { continue }
+                    guard let targetURL = URL(string: filePath) else { continue }
+                    guard targetURL.path.ml_isFileDirectory != nil else { continue }
+                    self.stringValue = targetURL.path
+                    return true
+                default:
+                    continue
                 }
             }
         }
-        
-        return true
+        return false
     }
 }

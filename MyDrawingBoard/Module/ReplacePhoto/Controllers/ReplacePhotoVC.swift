@@ -15,28 +15,24 @@ class ReplacePhotoVC: NSViewController {
     @IBOutlet weak var originFolderLabel: SelectedFolderLabel!
     @IBOutlet weak var replaceFolderLabel: SelectedFolderLabel!
     @IBOutlet var logTextView: NSTextView!
+    @IBOutlet weak var logScrollView: NSScrollView!
     
+    @IBOutlet weak var logClipView: NSClipView!
     private lazy var service = ReplacePhotoService(delegate: self)
     private lazy var textBuilder = GMLRichTextBuilder()
     private lazy var attributesBuilder = GMLAttributesBuilder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
-        self.title = "替换图片"
         
         textBuilder.defaultAttributes = attributesBuilder.font(GMLFont.systemFont(ofSize: 11)).popLast()
     }
     
-    @IBAction func handlePOP(_ sender: Any) {
-        guard let presentingVC = self.presentingViewController else { return }
-        presentingVC.dismiss(self)
-    }
     @IBAction func handleOriginFolder(_ sender: Any) {
         handleSelectedFolder { (result) in
             switch result {
             case .success(let fileURL):
-                originFolderLabel?.stringValue = fileURL.path
+                self.originFolderLabel?.stringValue = fileURL.path
             default: return
             }
         }
@@ -48,7 +44,7 @@ class ReplacePhotoVC: NSViewController {
         handleSelectedFolder { (result) in
             switch result {
             case .success(let fileURL):
-                replaceFolderLabel?.stringValue = fileURL.path
+                self.replaceFolderLabel?.stringValue = fileURL.path
             default: return
             }
         }
@@ -62,20 +58,16 @@ class ReplacePhotoVC: NSViewController {
         service.run()
     }
     
-    func handleSelectedFolder(completion: (SelectedFileURLResult) -> Void) {
-        let panel = NSOpenPanel()
-        panel.canChooseDirectories = true
-        panel.canChooseFiles = false
-        panel.allowsMultipleSelection = false
-        guard panel.runModal() == .OK else {
-            completion(Result.failure(ReplacePhotoError.cancelSelectFolder))
-            return
-        }
-        guard let selectedURL = panel.url else {
-            completion(Result.failure(ReplacePhotoError.isEmpty("选择的路径为空")))
-            return
-        }
-        completion(Result.success(selectedURL))
+    func handleSelectedFolder(completion: @escaping (SelectedFileURLResult) -> Void) {
+        _ = NSOpenPanel.showToCurrentWindow({
+            switch $0 {
+            case .success(let url):
+                completion(Result.success(url))
+            case .failure(let err):
+                let error : ReplacePhotoError = (err == .cancel) ? .cancelSelectFolder : .isEmpty("选择的路径为空")
+                completion(Result.failure(error))
+            }
+        })
     }
 }
 
@@ -90,6 +82,29 @@ extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
     func service(_ service: ReplacePhotoService, didReplace item: PhotoFileItem, toItem: PhotoFileItem) {
         let text = item.filePath + " 替换成 " + toItem.filePath + " 成功"
         logText(append: textBuilder.append(text, attributes: defaultAttributes()).append(.linebreak).popLast())
+    }
+    
+    func replaceDidFinish(service: ReplacePhotoService) {
+        
+        let totalCount = service.log.totalCount
+        if totalCount == 0 {
+            return
+        }
+        
+        var text = "执行完成！！！ 共有 "
+        let insertLocation = text.count
+        text += " 文件，"
+        
+        let errorCount = service.log.errorCount
+        let isAllSuccess = errorCount == 0
+        let isAllError = isAllSuccess ? false : totalCount == errorCount
+        let suffixStr = isAllSuccess ? "全部替换成功" : (isAllError ? "全部替换失败" : "\(errorCount) 个文件替换失败")
+        logText(append: textBuilder
+            .append(text, attributes: defaultAttributes())
+            .insert("\(service.log.totalCount)", attributes: errorAttributes(), at: insertLocation)
+            .append(suffixStr, attributes: errorAttributes())
+            .popLast())
+        
     }
     
     private func analysisError(_ error: Error) -> String {
@@ -125,7 +140,10 @@ extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
         if att == nil {
             return
         }
-        logTextView.textStorage?.append(att!)
+        DispatchQueue.main.async {
+            self.logTextView.textStorage?.append(att!)
+            self.logClipView.scroll(to: NSPoint(x: 0, y: self.logScrollView.contentSize.height - self.logScrollView.bounds.height))
+        }
     }
     
     private func defaultAttributes() -> GMLAttributesSet {

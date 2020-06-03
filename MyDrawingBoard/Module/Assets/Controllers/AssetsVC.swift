@@ -10,15 +10,13 @@ import Cocoa
 
 class AssetsVC: NSViewController {
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
     }
     
     @IBAction func handleAdd(_ sender: Any) {
-         NSOpenPanel()
+         
     }
 }
 

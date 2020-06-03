@@ -12,6 +12,7 @@ protocol ReplacePhotoServiceDelegate : NSObjectProtocol {
     func service(_ service: ReplacePhotoService, error: Error)
     func service(_ service: ReplacePhotoService, willReplace item: PhotoFileItem, toItem: PhotoFileItem) -> Bool
     func service(_ service: ReplacePhotoService, didReplace item: PhotoFileItem, toItem: PhotoFileItem)
+    /// 仅代表执行完成
     func replaceDidFinish(service: ReplacePhotoService)
 }
 
@@ -32,13 +33,16 @@ class ReplacePhotoService: NSObject {
     
     func run() {
         
-        do {
-            let items = try handleSelectedFile()
-            replace(originItems: items.originFileItems, replaceItems: items.toFileItems)
-        } catch let e as ReplacePhotoError {
-            delegate?.service(self, error: e)
-        } catch {
-            assert(false, error.localizedDescription)
+        DispatchQueue.global().async {
+            do {
+                let items = try self.handleSelectedFile()
+                self.replace(originItems: items.originFileItems, replaceItems: items.toFileItems)
+            } catch let e as ReplacePhotoError {
+                self.delegate?.service(self, error: e)
+            } catch {
+                assert(false, error.localizedDescription)
+            }
+            self.delegate?.replaceDidFinish(service: self)
         }
     }
     
@@ -103,7 +107,7 @@ private extension ReplacePhotoService {
     }
     
     /// 分析路径中图片
-    func analysisPhoto(path: String, isRecursive: Bool = false) -> [PhotoFileItem]? {
+    func analysisPhoto(path: String, isRecursive: Bool = true) -> [PhotoFileItem]? {
         var fileItems = [PhotoFileItem]()
         FileManager.default.enumerator(at: path, deepRecursion: isRecursive) { (filePath, isDir) -> FileManager.EnumeratorOperate in
             if !isDir, let fileItem = handle(filePath: filePath) {

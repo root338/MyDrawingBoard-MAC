@@ -44,11 +44,21 @@ extension MyMainPanel : NSTableViewDataSource, NSTableViewDelegate {
     }
     
     func tableViewSelectionDidChange(_ notification: Notification) {
+        
         let selectedRow = listView.selectedRow;
         if selectedRow < 0 { return }
         let item = tools[selectedRow]
         listView.deselectRow(selectedRow)
+        
+        for window in NSApplication.shared.windows {
+            if window.title == item.name {
+                window.orderFront(nil)
+                return
+            }
+        }
         let targetVC = item.targetClass.init()
-        self.presentAsModalWindow(targetVC)
+        let window = NSWindow(contentViewController: targetVC)
+        window.title = item.name
+        window.makeKeyAndOrderFront(nil)
     }
 }
