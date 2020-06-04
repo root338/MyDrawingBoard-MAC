@@ -166,6 +166,7 @@
 		18AF933D248786FE002A9D1B /* GMLListContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMLListContainer.swift; sourceTree = "<group>"; };
 		18AF933F24878794002A9D1B /* GMLListContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMLListContainerProtocol.swift; sourceTree = "<group>"; };
 		18AF93412487A079002A9D1B /* AssetsPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsPath.swift; sourceTree = "<group>"; };
+		18AF934724889262002A9D1B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		18EAA8E4247BA1DF000ACB9D /* ReplacePhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacePhotoService.swift; sourceTree = "<group>"; };
 		18EAA8E7247BA3D1000ACB9D /* ReplacePhotoDefinesType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacePhotoDefinesType.swift; sourceTree = "<group>"; };
 		18EAA8EA247CB1D2000ACB9D /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
@@ -525,6 +526,7 @@
 			children = (
 				18AF933D248786FE002A9D1B /* GMLListContainer.swift */,
 				18AF933F24878794002A9D1B /* GMLListContainerProtocol.swift */,
+				18AF934724889262002A9D1B /* README.md */,
 			);
 			path = ListData;
 			sourceTree = "<group>";

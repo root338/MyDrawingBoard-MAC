@@ -25,7 +25,7 @@ class ReplacePhotoVC: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textBuilder.defaultAttributes = attributesBuilder.font(GMLFont.systemFont(ofSize: 11)).popLast()
+        textBuilder.defaultAttributes = attributesBuilder.font(ofSize: 11).popLast()
     }
     
     @IBAction func handleOriginFolder(_ sender: Any) {
