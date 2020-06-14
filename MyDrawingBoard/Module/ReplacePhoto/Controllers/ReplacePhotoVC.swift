@@ -11,7 +11,7 @@ import Cocoa
 typealias SelectedFileURLResult = Result<URL, ReplacePhotoError>
 
 class ReplacePhotoVC: NSViewController {
-
+    
     @IBOutlet weak var originFolderLabel: SelectedFolderLabel!
     @IBOutlet weak var replaceFolderLabel: SelectedFolderLabel!
     @IBOutlet var logTextView: NSTextView!
@@ -19,60 +19,53 @@ class ReplacePhotoVC: NSViewController {
     
     @IBOutlet weak var logClipView: NSClipView!
     private lazy var service = ReplacePhotoService(delegate: self)
+    private lazy var storeService = ReplacePhotoStoreService(delegate: self)
     private lazy var textBuilder = GMLRichTextBuilder()
     private lazy var attributesBuilder = GMLAttributesBuilder()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         textBuilder.defaultAttributes = attributesBuilder.font(ofSize: 11).popLast()
+        configContentView()
     }
     
     @IBAction func handleOriginFolder(_ sender: Any) {
-        handleSelectedFolder { (result) in
-            switch result {
-            case .success(let fileURL):
-                self.originFolderLabel?.stringValue = fileURL.path
-            default: return
-            }
-        }
+        handleSelectedFolder(identifier: .originPath)
     }
     @IBAction func handleFromFolderHistory(_ sender: Any) {
         
     }
     @IBAction func handleReplaceFolder(_ sender: Any) {
-        handleSelectedFolder { (result) in
-            switch result {
-            case .success(let fileURL):
-                self.replaceFolderLabel?.stringValue = fileURL.path
-            default: return
-            }
-        }
+        handleSelectedFolder(identifier: .toPath)
     }
+    
     @IBAction func handleToFolderHistory(_ sender: Any) {
         
     }
     @IBAction func handleReplace(_ sender: Any) {
         logTextView.textStorage?.setAttributedString(NSAttributedString())
-        service.set(originPath: originFolderLabel.stringValue, toPath: replaceFolderLabel.stringValue)
+        service.set(originPath: storeService.getSelectedURL(for: .originPath),
+                    toPath: storeService.getSelectedURL(for: .toPath))
         service.run()
     }
     
-    func handleSelectedFolder(completion: @escaping (SelectedFileURLResult) -> Void) {
+    func handleSelectedFolder(identifier: ReplacePhotoPathTypeIdentifier) {
         _ = NSOpenPanel.showToCurrentWindow({
             switch $0 {
             case .success(let url):
-                completion(Result.success(url))
-            case .failure(let err):
-                let error : ReplacePhotoError = (err == .cancel) ? .cancelSelectFolder : .isEmpty("选择的路径为空")
-                completion(Result.failure(error))
+                self.storeService.set(selectedURL: url, for: identifier)
+            case .failure(_): break
             }
         })
     }
 }
 
-extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
+extension ReplacePhotoVC: ReplacePhotoServiceDelegate, ReplacePhotoStoreServiceDelegate {
     
+    //MARK:- ReplacePhotoServiceDelegate
     func service(_ service: ReplacePhotoService, error: Error) {
         logText(append: textBuilder
             .append(analysisError(error), attributes: errorAttributes())
@@ -80,7 +73,7 @@ extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
     }
     
     func service(_ service: ReplacePhotoService, didReplace item: PhotoFileItem, toItem: PhotoFileItem) {
-        let text = item.filePath + " 替换成 " + toItem.filePath + " 成功"
+        let text = item.filePath.path + " 替换成 " + toItem.filePath.path + " 成功"
         logText(append: textBuilder.append(text, attributes: defaultAttributes()).append(.linebreak).popLast())
     }
     
@@ -105,6 +98,27 @@ extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
             .append(suffixStr, attributes: errorAttributes())
             .popLast())
         
+        if !isAllError {
+            _ = storeService.save()
+//            _ = storeService.save(originPath: service.originFolder!)
+//            _ = storeService.save(replacePath: service.replaceFolder!)
+        }
+    }
+    
+    //MARK:- ReplacePhotoStoreServiceDelegate
+    func service(_ service: ReplacePhotoStoreService, didChange selectedURL: URL, identifier: ReplacePhotoPathTypeIdentifier) {
+        let path = selectedURL.path
+        switch identifier {
+        case .originPath:
+            originFolderLabel.stringValue = path
+        case .toPath:
+            replaceFolderLabel.stringValue = path
+        }
+    }
+    func service(_ service: ReplacePhotoStoreService, error: Error) {
+        logText(append: textBuilder
+        .append(analysisError(error), attributes: errorAttributes())
+        .append(.linebreak).popLast())
     }
     
     private func analysisError(_ error: Error) -> String {
@@ -120,9 +134,9 @@ extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
             case .notFind:
                 return "没有找到"
             case .operateFailure(let item):
-                var msg = item.originItem.filePath
+                var msg = item.originItem.filePath.path
                 if item.newItem != nil {
-                    msg.append("  >>> " + item.newItem!.filePath)
+                    msg.append("  >>> " + item.newItem!.filePath.path)
                 }
                 if item.error != nil {
                     msg.append(analysisError(item.error!))
@@ -160,5 +174,23 @@ extension ReplacePhotoVC: ReplacePhotoServiceDelegate {
             return att
         }
         return attributesBuilder.push(identifier: identifier).foregroundColor(GMLColor.red).attributes(for: identifier)!
+    }
+}
+
+private extension ReplacePhotoVC {
+    func configContentView() {
+        if let originFileURL = storeService.getSelectedURL(for: .originPath) {
+            originFolderLabel.stringValue = originFileURL.path
+        }
+        if let toFileURL = storeService.getSelectedURL(for: .toPath) {
+            replaceFolderLabel.stringValue = toFileURL.path
+        }
+        
+//        if let originFileItem = storeService.originPaths?.last, originFileItem.isAvailable {
+//            originFolderLabel.stringValue = originFileItem.filePath
+//        }
+//        if let toFileItem = storeService.replacePaths?.last, toFileItem.isAvailable {
+//            replaceFolderLabel.stringValue = toFileItem.filePath
+//        }
     }
 }

@@ -9,7 +9,12 @@
 import Foundation
 
 struct PhotoFileItem {
-    let filePath : String
+    let filePath : URL
     let format : String
     let pixelSize : NSSize
+}
+
+struct FileItem {
+    let filePath: URL
+    let isAvailable: Bool
 }

@@ -24,8 +24,8 @@ extension ReplacePhotoService {
 }
 
 class ReplacePhotoService: NSObject {
-    private(set) var originFolder: String?
-    private(set) var replaceFolder: String?
+    private(set) var originFolder: URL?
+    private(set) var replaceFolder: URL?
     private(set) var types : [String] = ["png", "jpeg"]
     weak var delegate : ReplacePhotoServiceDelegate?
     
@@ -46,7 +46,7 @@ class ReplacePhotoService: NSObject {
         }
     }
     
-    func set(originPath: String, toPath: String) {
+    func set(originPath: URL?, toPath: URL?) {
         self.originFolder = originPath
         self.replaceFolder = toPath
     }
@@ -56,10 +56,10 @@ private extension ReplacePhotoService {
     // 处理选择选中的文件
     func handleSelectedFile() throws -> (originFileItems: [PhotoFileItem], toFileItems: [PhotoFileItem]) {
         
-        guard let originFolder = self.originFolder, !originFolder.isEmpty else {
+        guard let originFolder = self.originFolder, !originFolder.path.isEmpty else {
             throw ReplacePhotoError.isEmpty("来源文件路径不能为空")
         }
-        guard let replaceFolder = self.replaceFolder, !replaceFolder.isEmpty else {
+        guard let replaceFolder = self.replaceFolder, !replaceFolder.path.isEmpty else {
             throw ReplacePhotoError.isEmpty("目标文件路径不能为空")
         }
         if originFolder == replaceFolder {
@@ -87,8 +87,7 @@ private extension ReplacePhotoService {
                     continue
                 }
                 do {
-                    try fileM.removeItem(atPath: originItem.filePath)
-                    try fileM.copyItem(atPath: newItem.filePath, toPath: originItem.filePath)
+                    _ = try fileM.replaceItemAt(originItem.filePath, withItemAt: newItem.filePath)
                     _ = log.add(log: FileReplaceResult(originItem: originItem, newItem: newItem, error: nil))
                     delegate?.service(self, didReplace: originItem, toItem: newItem)
                     isReplace = true
@@ -107,23 +106,28 @@ private extension ReplacePhotoService {
     }
     
     /// 分析路径中图片
-    func analysisPhoto(path: String, isRecursive: Bool = true) -> [PhotoFileItem]? {
+    func analysisPhoto(path: URL, isRecursive: Bool = true) -> [PhotoFileItem]? {
         var fileItems = [PhotoFileItem]()
-        FileManager.default.enumerator(at: path, deepRecursion: isRecursive) { (filePath, isDir) -> FileManager.EnumeratorOperate in
-            if !isDir, let fileItem = handle(filePath: filePath) {
+        
+        FileManager.default.enumerator(at: path, handle: {
+            guard let isDir = try? $1().isDirectory else {
+                assert(false, "目录不会为空的，请处理...")
+                return .none
+            }
+            if !isDir, let fileItem = handle(filePath: $0) {
                 fileItems.append(fileItem)
             }
             return .none
-        }
+        })
         return fileItems.count > 0 ? fileItems : nil
     }
     /// 创建图片对象
-    func handle(filePath: String) -> PhotoFileItem? {
-        let pathExtension = filePath.ml_pathExtension
+    func handle(filePath: URL) -> PhotoFileItem? {
+        let pathExtension = filePath.pathExtension
         guard types.contains(pathExtension) else {
             return nil
         }
-        guard let imagePixelSize = NSImage(contentsOfFile: filePath)?.imagePixelSize else {
+        guard let imagePixelSize = NSImage(byReferencing: filePath).imagePixelSize else {
             return nil
         }
         return PhotoFileItem(filePath: filePath, format: pathExtension, pixelSize: imagePixelSize)

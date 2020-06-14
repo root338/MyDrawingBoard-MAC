@@ -22,3 +22,8 @@ enum photoFormat : String {
     case png = "png"
     case jpeg = "jpeg"
 }
+
+enum ReplacePhotoPathTypeIdentifier: String {
+    case originPath
+    case toPath
+}
