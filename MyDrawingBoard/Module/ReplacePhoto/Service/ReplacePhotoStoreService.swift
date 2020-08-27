@@ -80,7 +80,7 @@ extension ReplacePhotoStoreService {
         for subpath in bookmarkDataList {
             let data = try Data(contentsOf: subpath)
             var bookmarkDataIsStale = false
-            let url = try! URL(resolvingBookmarkData: data, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &bookmarkDataIsStale)
+            let url = try URL(resolvingBookmarkData: data, options: .withSecurityScope, relativeTo: nil, bookmarkDataIsStale: &bookmarkDataIsStale)
             _ = url.startAccessingSecurityScopedResource()
             urlList.append(url)
         }

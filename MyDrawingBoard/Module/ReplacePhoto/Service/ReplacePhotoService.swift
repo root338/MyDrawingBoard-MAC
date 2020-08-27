@@ -35,6 +35,7 @@ class ReplacePhotoService: NSObject {
         
         DispatchQueue.global().async {
             do {
+                self.log.clear()
                 let items = try self.handleSelectedFile()
                 self.replace(originItems: items.originFileItems, replaceItems: items.toFileItems)
             } catch let e as ReplacePhotoError {
@@ -87,7 +88,8 @@ private extension ReplacePhotoService {
                     continue
                 }
                 do {
-                    _ = try fileM.replaceItemAt(originItem.filePath, withItemAt: newItem.filePath)
+                    try fileM.removeItem(at: originItem.filePath)
+                    _ = try fileM.copyItem(at: newItem.filePath, to: originItem.filePath)
                     _ = log.add(log: FileReplaceResult(originItem: originItem, newItem: newItem, error: nil))
                     delegate?.service(self, didReplace: originItem, toItem: newItem)
                     isReplace = true

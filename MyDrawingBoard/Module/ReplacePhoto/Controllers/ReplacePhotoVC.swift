@@ -26,7 +26,8 @@ class ReplacePhotoVC: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        originFolderLabel.dragDelegate = self
+        replaceFolderLabel.dragDelegate = self
         
         textBuilder.defaultAttributes = attributesBuilder.font(ofSize: 11).popLast()
         configContentView()
@@ -63,7 +64,14 @@ class ReplacePhotoVC: NSViewController {
     }
 }
 
-extension ReplacePhotoVC: ReplacePhotoServiceDelegate, ReplacePhotoStoreServiceDelegate {
+extension ReplacePhotoVC: SelectedFolderLabelDragDelegate, ReplacePhotoServiceDelegate, ReplacePhotoStoreServiceDelegate {
+    
+    //MARK:- SelectedFolderLabelDragDelegate
+    func dragDidChange(label: SelectedFolderLabel) {
+        let url = URL(fileURLWithPath: label.stringValue)
+        let identifier : ReplacePhotoPathTypeIdentifier = label == originFolderLabel ? .originPath : .toPath
+        storeService.set(selectedURL: url, for: identifier)
+    }
     
     //MARK:- ReplacePhotoServiceDelegate
     func service(_ service: ReplacePhotoService, error: Error) {

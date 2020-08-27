@@ -8,8 +8,12 @@
 
 import Cocoa
 
+protocol SelectedFolderLabelDragDelegate : NSObjectProtocol {
+    func dragDidChange(label: SelectedFolderLabel)
+}
+
 class SelectedFolderLabel: NSTextField {
-    
+    weak var dragDelegate : SelectedFolderLabelDragDelegate?
     override func awakeFromNib() {
         
         super.awakeFromNib()
@@ -34,6 +38,7 @@ class SelectedFolderLabel: NSTextField {
                     guard let targetURL = URL(string: filePath) else { continue }
                     guard targetURL.path.ml_isFileDirectory != nil else { continue }
                     self.stringValue = targetURL.path
+                    dragDelegate?.dragDidChange(label: self)
                     return true
                 default:
                     continue

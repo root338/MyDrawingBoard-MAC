@@ -605,13 +605,6 @@
 			path = "App&UI";
 			sourceTree = "<group>";
 		};
-		6D8D0CD3247ABED500FD6933 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		6D8D0CD4247ABF1200FD6933 /* PublicViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -690,7 +683,6 @@
 				18EAA8E6247BA341000ACB9D /* DefineTypes */,
 				18EAA8E3247BA1BA000ACB9D /* Service */,
 				18EAA8E2247B6CF6000ACB9D /* Controllers */,
-				6D8D0CD3247ABED500FD6933 /* Views */,
 				6D9C72FC2483C08900F7B804 /* ReplacePhotoREADME.md */,
 			);
 			path = ReplacePhoto;

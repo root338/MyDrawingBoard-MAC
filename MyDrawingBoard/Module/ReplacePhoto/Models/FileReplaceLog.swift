@@ -31,4 +31,10 @@ struct FileReplaceLogSet {
         totalCount += 1
         return log
     }
+    
+    mutating func clear() {
+        totalCount = 0
+        errorCount = 0
+        log.removeAll()
+    }
 }
