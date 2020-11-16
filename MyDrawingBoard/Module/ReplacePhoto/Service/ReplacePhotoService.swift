@@ -26,6 +26,8 @@ extension ReplacePhotoService {
 class ReplacePhotoService: NSObject {
     private(set) var originFolder: URL?
     private(set) var replaceFolder: URL?
+    var originFolderIsDepth = false
+    var replaceFolderIsDepth = false
     private(set) var types : [String] = ["png", "jpeg"]
     weak var delegate : ReplacePhotoServiceDelegate?
     
@@ -51,6 +53,7 @@ class ReplacePhotoService: NSObject {
         self.originFolder = originPath
         self.replaceFolder = toPath
     }
+    
 }
 
 private extension ReplacePhotoService {
@@ -66,10 +69,10 @@ private extension ReplacePhotoService {
         if originFolder == replaceFolder {
             throw ReplacePhotoError.unavailable("源文件路径和目标文件路径不能相同")
         }
-        guard let originFileItems = analysisPhoto(path: originFolder) else {
+        guard let originFileItems = analysisPhoto(path: originFolder, isRecursive: originFolderIsDepth) else {
             throw ReplacePhotoError.isEmpty("来源文件对应没有内容")
         }
-        guard let replaceFileItems = analysisPhoto(path: replaceFolder) else {
+        guard let replaceFileItems = analysisPhoto(path: replaceFolder, isRecursive: replaceFolderIsDepth) else {
             throw ReplacePhotoError.isEmpty("目标文件对应没有内容")
         }
         return (originFileItems, replaceFileItems)
@@ -118,6 +121,9 @@ private extension ReplacePhotoService {
             }
             if !isDir, let fileItem = handle(filePath: $0) {
                 fileItems.append(fileItem)
+            }
+            if isDir {
+                return isRecursive ? .enter : .none
             }
             return .none
         })

@@ -49,6 +49,18 @@
 		18AF933E248786FE002A9D1B /* GMLListContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF933D248786FE002A9D1B /* GMLListContainer.swift */; };
 		18AF934024878794002A9D1B /* GMLListContainerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF933F24878794002A9D1B /* GMLListContainerProtocol.swift */; };
 		18AF93422487A079002A9D1B /* AssetsPath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AF93412487A079002A9D1B /* AssetsPath.swift */; };
+		18DA9047251855990054C6F3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA9046251855990054C6F3 /* main.swift */; };
+		18DA9052251855A60054C6F3 /* ReplacePhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EAA8E4247BA1DF000ACB9D /* ReplacePhotoService.swift */; };
+		18DA9068251855AF0054C6F3 /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EAA8EA247CB1D2000ACB9D /* FileItem.swift */; };
+		18DA9077251855B40054C6F3 /* FileReplaceLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D90403524824BB400D24289 /* FileReplaceLog.swift */; };
+		18DA9081251855EF0054C6F3 /* ToolMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA9080251855EE0054C6F3 /* ToolMethod.swift */; };
+		18DA9091251856460054C6F3 /* ReplaceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA9090251856450054C6F3 /* ReplaceInfo.swift */; };
+		18DA909A251856EE0054C6F3 /* Defines.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA9099251856EE0054C6F3 /* Defines.swift */; };
+		18DA90B0251885660054C6F3 /* ReplacePhotoDefinesType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EAA8E7247BA3D1000ACB9D /* ReplacePhotoDefinesType.swift */; };
+		18DA90B8251885830054C6F3 /* FileManagerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183591732480BA530093FEB2 /* FileManagerExtension.swift */; };
+		18DA90C02518859F0054C6F3 /* NSImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1835916E2480BA530093FEB2 /* NSImageExtension.swift */; };
+		18DA90C8251885BA0054C6F3 /* StringPathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 183591762480BA540093FEB2 /* StringPathExtension.swift */; };
+		18DA90D1251888310054C6F3 /* ReplaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DA90D0251888310054C6F3 /* ReplaceService.swift */; };
 		18EAA8E5247BA1DF000ACB9D /* ReplacePhotoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EAA8E4247BA1DF000ACB9D /* ReplacePhotoService.swift */; };
 		18EAA8E8247BA3D1000ACB9D /* ReplacePhotoDefinesType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EAA8E7247BA3D1000ACB9D /* ReplacePhotoDefinesType.swift */; };
 		18EAA8EB247CB1D2000ACB9D /* FileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18EAA8EA247CB1D2000ACB9D /* FileItem.swift */; };
@@ -123,6 +135,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		18DA9042251855980054C6F3 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -169,6 +190,12 @@
 		18AF933F24878794002A9D1B /* GMLListContainerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMLListContainerProtocol.swift; sourceTree = "<group>"; };
 		18AF93412487A079002A9D1B /* AssetsPath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetsPath.swift; sourceTree = "<group>"; };
 		18AF934724889262002A9D1B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		18DA9044251855980054C6F3 /* ReplacePhoneTools */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ReplacePhoneTools; sourceTree = BUILT_PRODUCTS_DIR; };
+		18DA9046251855990054C6F3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		18DA9080251855EE0054C6F3 /* ToolMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolMethod.swift; sourceTree = "<group>"; };
+		18DA9090251856450054C6F3 /* ReplaceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceInfo.swift; sourceTree = "<group>"; };
+		18DA9099251856EE0054C6F3 /* Defines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defines.swift; sourceTree = "<group>"; };
+		18DA90D0251888310054C6F3 /* ReplaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplaceService.swift; sourceTree = "<group>"; };
 		18EAA8E4247BA1DF000ACB9D /* ReplacePhotoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacePhotoService.swift; sourceTree = "<group>"; };
 		18EAA8E7247BA3D1000ACB9D /* ReplacePhotoDefinesType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReplacePhotoDefinesType.swift; sourceTree = "<group>"; };
 		18EAA8EA247CB1D2000ACB9D /* FileItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileItem.swift; sourceTree = "<group>"; };
@@ -232,6 +259,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18DA9041251855980054C6F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D904ECB24829A9800D24289 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -267,6 +301,7 @@
 				6D904EE624829A9B00D24289 /* MyDrawingBoard-iOSTests */,
 				6D904EF124829A9B00D24289 /* MyDrawingBoard-iOSUITests */,
 				18AF930124874585002A9D1B /* TestCommandLine */,
+				18DA9045251855990054C6F3 /* ReplacePhoneTools */,
 				181D45BB24776DE90038F6F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -280,6 +315,7 @@
 				6D904EE324829A9B00D24289 /* MyDrawingBoard-iOSTests.xctest */,
 				6D904EEE24829A9B00D24289 /* MyDrawingBoard-iOSUITests.xctest */,
 				18AF930024874585002A9D1B /* TestCommandLine */,
+				18DA9044251855980054C6F3 /* ReplacePhoneTools */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -536,6 +572,18 @@
 			path = ListData;
 			sourceTree = "<group>";
 		};
+		18DA9045251855990054C6F3 /* ReplacePhoneTools */ = {
+			isa = PBXGroup;
+			children = (
+				18DA9046251855990054C6F3 /* main.swift */,
+				18DA90D0251888310054C6F3 /* ReplaceService.swift */,
+				18DA9080251855EE0054C6F3 /* ToolMethod.swift */,
+				18DA9090251856450054C6F3 /* ReplaceInfo.swift */,
+				18DA9099251856EE0054C6F3 /* Defines.swift */,
+			);
+			path = ReplacePhoneTools;
+			sourceTree = "<group>";
+		};
 		18EAA8E2247B6CF6000ACB9D /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -743,6 +791,23 @@
 			productReference = 18AF930024874585002A9D1B /* TestCommandLine */;
 			productType = "com.apple.product-type.tool";
 		};
+		18DA9043251855980054C6F3 /* ReplacePhoneTools */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 18DA9048251855990054C6F3 /* Build configuration list for PBXNativeTarget "ReplacePhoneTools" */;
+			buildPhases = (
+				18DA9040251855980054C6F3 /* Sources */,
+				18DA9041251855980054C6F3 /* Frameworks */,
+				18DA9042251855980054C6F3 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ReplacePhoneTools;
+			productName = ReplacePhoneTools;
+			productReference = 18DA9044251855980054C6F3 /* ReplacePhoneTools */;
+			productType = "com.apple.product-type.tool";
+		};
 		6D904ECD24829A9800D24289 /* MyDrawingBoard-iOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D904EF524829A9B00D24289 /* Build configuration list for PBXNativeTarget "MyDrawingBoard-iOS" */;
@@ -802,8 +867,8 @@
 		181D45B224776DE90038F6F3 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastSwiftUpdateCheck = 1200;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = GML;
 				TargetAttributes = {
 					181D45B924776DE90038F6F3 = {
@@ -816,6 +881,9 @@
 					};
 					18AF92FF24874585002A9D1B = {
 						CreatedOnToolsVersion = 11.5;
+					};
+					18DA9043251855980054C6F3 = {
+						CreatedOnToolsVersion = 12.0;
 					};
 					6D904ECD24829A9800D24289 = {
 						CreatedOnToolsVersion = 11.3;
@@ -849,6 +917,7 @@
 				6D904EE224829A9B00D24289 /* MyDrawingBoard-iOSTests */,
 				6D904EED24829A9B00D24289 /* MyDrawingBoard-iOSUITests */,
 				18AF92FF24874585002A9D1B /* TestCommandLine */,
+				18DA9043251855980054C6F3 /* ReplacePhoneTools */,
 			);
 		};
 /* End PBXProject section */
@@ -978,6 +1047,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		18DA9040251855980054C6F3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18DA90C8251885BA0054C6F3 /* StringPathExtension.swift in Sources */,
+				18DA909A251856EE0054C6F3 /* Defines.swift in Sources */,
+				18DA90B8251885830054C6F3 /* FileManagerExtension.swift in Sources */,
+				18DA9047251855990054C6F3 /* main.swift in Sources */,
+				18DA9077251855B40054C6F3 /* FileReplaceLog.swift in Sources */,
+				18DA9081251855EF0054C6F3 /* ToolMethod.swift in Sources */,
+				18DA9068251855AF0054C6F3 /* FileItem.swift in Sources */,
+				18DA9091251856460054C6F3 /* ReplaceInfo.swift in Sources */,
+				18DA90D1251888310054C6F3 /* ReplaceService.swift in Sources */,
+				18DA90B0251885660054C6F3 /* ReplacePhotoDefinesType.swift in Sources */,
+				18DA90C02518859F0054C6F3 /* NSImageExtension.swift in Sources */,
+				18DA9052251855A60054C6F3 /* ReplacePhotoService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6D904ECA24829A9800D24289 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1088,6 +1176,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1148,6 +1237,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -1279,6 +1369,7 @@
 		18AF930524874585002A9D1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -1290,9 +1381,32 @@
 		18AF930624874585002A9D1B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
 				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		18DA9049251855990054C6F3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		18DA904A251855990054C6F3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1462,6 +1576,15 @@
 			buildConfigurations = (
 				18AF930524874585002A9D1B /* Debug */,
 				18AF930624874585002A9D1B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		18DA9048251855990054C6F3 /* Build configuration list for PBXNativeTarget "ReplacePhoneTools" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18DA9049251855990054C6F3 /* Debug */,
+				18DA904A251855990054C6F3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
